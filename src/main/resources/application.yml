@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: farming-App
+  datasource:
+    url: jdbc:postgresql://tiny.db.elephantsql.com:5432/ndnrajrd
+    username: ndnrajrd
+    password: X4twvDP7ZCgh-Llw9NdgyfnJaJxMve6f
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: Facebook
+    password: fcmhpukoxswqtjhe
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  data:
+    redis:
+      host: redis-16904.c292.ap-southeast-1-1.ec2.redns.redis-cloud.com
+      port: 16904
+      password: B8XOR0A25RpczBOJooae1KjwWdLCxnv2
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1023349426630-b91i8avprktfh6d8910p0llhdu88tj3b.apps.googleusercontent.com
+            client-secret: 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
+            scope: openid,profile,email
+            redirect-uri: http://localhost:8080/api/v1/auth/google
+      resourceserver:
+        jwt:
+#          issuer-uri: http://localhost:8080
+          issuer-uri: https://accounts.google.com
+          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+
+
+
+
+
+
+open:
+  api:
+    title: API document
+    version: v1.0.0
+    description: Mo ta api service
+    serverUrl: https://farming-app-production.up.railway.app/
+    serverName: server test
+
+
+# Cấu hình URL và token của API GHN
+ghn:
+    api:
+      url: https://online-gateway.ghn.vn
+      token: 199acb3e-3b64-11ef-a3f8-86d541dd462b
+      shopid: 5151825
+
+
+
