@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService {
 
     public Account saveUser(Account user) {
         if (Objects.isNull(user)) {
-            throw new InvalidArgumentException("Null user","..","..");
+            throw new InvalidArgumentException("User null");
         }
         return accountRepository.save(user);
     }

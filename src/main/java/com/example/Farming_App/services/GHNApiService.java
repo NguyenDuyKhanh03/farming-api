@@ -16,13 +16,10 @@ public class GHNApiService {
 
     @Value("${ghn.api.token}")
     private String ghnApiToken;
-
     @Value("${ghn.api.shopid}")
     private String ghnApiShopId;
-
     public Mono<ShippingOrderResponse> createShippingOrder(PostOrderRequest postOrderRequest) {
         WebClient webClient = WebClient.create(ghnApiUrl);
-
         return webClient.post()
                 .uri("/shiip/public-api/v2/shipping-order/create")
                 .header("token", ghnApiToken)

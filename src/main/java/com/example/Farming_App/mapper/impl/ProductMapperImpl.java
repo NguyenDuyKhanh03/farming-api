@@ -23,7 +23,7 @@ public class ProductMapperImpl implements Mapper<Product, ProductResponse> {
         productResponse.setId(product.getId());
         productResponse.setName(product.getName());
         productResponse.setPrice(product.getPrice());
-        productResponse.setDiscount(product.getDiscount());
+//        productResponse.setDiscount(product.getDiscount());
         productResponse.setDescription(product.getDescription());
         productResponse.setCategoryId(product.getCategory().getId());
         productResponse.setQuantity(product.getQuantity());

@@ -11,7 +11,7 @@ spring:
       mode: always
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -32,25 +32,10 @@ spring:
       host: redis-16904.c292.ap-southeast-1-1.ec2.redns.redis-cloud.com
       port: 16904
       password: B8XOR0A25RpczBOJooae1KjwWdLCxnv2
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 1023349426630-b91i8avprktfh6d8910p0llhdu88tj3b.apps.googleusercontent.com
-            client-secret: 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
-            scope: openid,profile,email
-            redirect-uri: http://localhost:8080/api/v1/auth/google
-      resourceserver:
-        jwt:
-#          issuer-uri: http://localhost:8080
-          issuer-uri: https://accounts.google.com
-          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
-
-
-
-
-
+  elasticsearch:
+    username: elastic
+    password: 270703
+    uris: http://localhost:9200
 
 open:
   api:

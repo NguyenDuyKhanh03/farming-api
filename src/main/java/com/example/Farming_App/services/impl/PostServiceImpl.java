@@ -50,7 +50,7 @@ public class PostServiceImpl implements PostService {
 
         List<Image> images=new ArrayList<>();
         for (MultipartFile file:postDto.getImages()){
-            String imageUrl=imageService.upload(file);
+            String imageUrl= imageService.upload(file).toString();
             Image image=new Image();
             image.setName(post.getTitle());
             image.setUrl(imageUrl);

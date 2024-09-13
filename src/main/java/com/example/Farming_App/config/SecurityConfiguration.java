@@ -33,14 +33,12 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**","/v3/api-docs/**", "/swagger-ui/**","/mail/**","/ws/**","/login/**")
+                .authorizeHttpRequests(request->request.requestMatchers("/api/v1/auth/**","/v3/api-docs/**", "/swagger-ui/**","/mail/**","/ws/**","/login/**","/")
                         .permitAll()
                         .requestMatchers("/api/v1/admin").hasAuthority("ADMIN")
                         .requestMatchers("/api/v1/user").hasAuthority("USER")
                         .anyRequest().authenticated()
                 )
-//                .oauth2ResourceServer((oauth2)->oauth2
-//                        .jwt(Customizer.withDefaults()))
                 .sessionManagement(manager->manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class

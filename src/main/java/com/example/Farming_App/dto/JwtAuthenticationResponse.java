@@ -5,10 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Schema(
-        name = "JwtAuthentication",
-        description = "Schema to hold JWT authentication information"
-)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

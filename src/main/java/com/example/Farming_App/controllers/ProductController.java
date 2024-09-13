@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,12 +32,12 @@ public class ProductController {
                                              @RequestParam("description") String description,
                                              @RequestParam("categoryId") Long categoryId,
                                              @RequestParam("quantity") int quantity,
-                                             @RequestPart("images") List<MultipartFile> images){
+                                             @RequestPart("images") List<MultipartFile> images) throws IOException {
 
         ProductRequest productRequest = new ProductRequest();
         productRequest.setName(name);
         productRequest.setPrice(price);
-        productRequest.setDiscount(discount);
+//        productRequest.setDiscount(discount);
         productRequest.setDescription(description);
         productRequest.setCategoryId(categoryId);
         productRequest.setQuantity(quantity);

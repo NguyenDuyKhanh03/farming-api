@@ -21,23 +21,18 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(value = {"images"})
+//@JsonIgnoreProperties(value = {"images"})
 public class ProductDto {
     private Long id;
 
-    @NotEmpty(message = "Name can not be a null or empty")
     private String name;
 
-    @NotEmpty(message = "Price can not be a null or empty")
     private double price;
 
-    private int discount;
     private String description;
 
-    @NotEmpty(message = "Category id can not be a null or empty")
     private Long categoryId;
 
-    @NotEmpty(message = "Quantity can not be a null or empty")
     private double quantity;
 
     private double soldQuantity;

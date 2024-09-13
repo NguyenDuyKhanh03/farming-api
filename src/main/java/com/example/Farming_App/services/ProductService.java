@@ -4,10 +4,11 @@ import com.example.Farming_App.dto.product.ProductDto;
 import com.example.Farming_App.dto.product.ProductRequest;
 import com.example.Farming_App.dto.product.ProductResponse;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ProductService {
-    boolean addProduct(ProductRequest productRequest);
+    boolean addProduct(ProductRequest productRequest) throws IOException;
 
     List<ProductResponse> getListProduct();
 

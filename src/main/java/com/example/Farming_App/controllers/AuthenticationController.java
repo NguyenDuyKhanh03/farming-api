@@ -4,14 +4,6 @@ import com.example.Farming_App.constants.AccountsConstants;
 import com.example.Farming_App.dto.*;
 import com.example.Farming_App.entity.Account;
 import com.example.Farming_App.services.AuthenticationService;
-import com.google.api.client.auth.oauth2.TokenResponseException;
-import com.google.api.client.googleapis.auth.oauth2.*;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.nimbusds.jwt.JWTClaimsSet;
-import com.nimbusds.jwt.SignedJWT;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -148,28 +140,5 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticationService.signInGoogle(email));
     }
 
-    @PostMapping("/login/google")
-    public ResponseEntity<?> authenticationGoogle(@RequestBody String idTokenString) {
-        JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-        GoogleIdTokenVerifier verifier;
-        try {
-            verifier = new GoogleIdTokenVerifier.Builder(GoogleNetHttpTransport.newTrustedTransport(), jsonFactory)
-                    .setAudience(Collections.singletonList("1023349426630-b91i8avprktfh6d8910p0llhdu88tj3b.apps.googleusercontent.com"))
-                    .build();
 
-            GoogleIdToken idToken = verifier.verify(idTokenString);
-            if (idToken != null) {
-                GoogleIdToken.Payload payload = idToken.getPayload();
-
-                String userId = payload.getSubject();  // ID của người dùng
-                String email = payload.getEmail();
-                return ResponseEntity.ok(email);
-            }
-
-            return ResponseEntity.ok("");
-        } catch (IOException | GeneralSecurityException e) {
-            ResponseEntity.ok(e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
 }

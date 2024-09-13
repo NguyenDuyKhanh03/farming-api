@@ -45,7 +45,7 @@ public class CartServiceImpl implements CartService {
                     .findAny();
             if (cartDetail.isPresent()){
                 if(cartDetail.get().getProduct().getQuantity() < cartDetail.get().getQuantity()+quantity)
-                    throw new InvalidArgumentException("Product","stock",String.valueOf(quantity));
+                    throw new InvalidArgumentException("Product stock");
                 cartDetail.get().setQuantity(cartDetail.get().getQuantity()+quantity);
                 Cart updatedCart=calculatePrice(cart);
                 cart=cartRepository.save(updatedCart);
@@ -63,7 +63,7 @@ public class CartServiceImpl implements CartService {
                 );
 
         if(product.getQuantity()<quantity)
-            throw new InvalidArgumentException("Product","stock",String.valueOf(quantity));
+            throw new InvalidArgumentException("Product stock");
 
         CartDetail cartDetail= new CartDetail();
         cartDetail.setQuantity(quantity);
@@ -85,7 +85,7 @@ public class CartServiceImpl implements CartService {
         Cart cart=account.getCart();
 
         if(Objects.isNull(cart) || Objects.isNull(cart.getCartDetails()) || cart.getCartDetails().isEmpty())
-            throw new InvalidArgumentException("Cart","list cart item","...");
+            throw new InvalidArgumentException("Adding product");
 
         CartDetail cartDetail=cart.getCartDetails()
                 .stream()
@@ -96,7 +96,7 @@ public class CartServiceImpl implements CartService {
                 );
 
         if(cartDetail.getProduct().getQuantity()< (cartDetail.getQuantity()+ quantity) ){
-            throw new InvalidArgumentException("Product","quantity",String.valueOf(quantity));
+            throw new InvalidArgumentException("The product quantity");
         }
         cartDetail.setQuantity(cartDetail.getQuantity()+quantity);
         cart=calculatePrice(cart);
@@ -110,7 +110,7 @@ public class CartServiceImpl implements CartService {
         Cart cart=account.getCart();
 
         if(Objects.isNull(cart) || Objects.isNull(cart.getCartDetails()) || cart.getCartDetails().isEmpty())
-            throw new InvalidArgumentException("Cart","list cart item","...");
+            throw new InvalidArgumentException("Adding product");
 
         CartDetail cartDetail=cart.getCartDetails()
                 .stream()
@@ -151,7 +151,7 @@ public class CartServiceImpl implements CartService {
     }
     public void saveCart(Cart cart) {
         if (Objects.isNull(cart)) {
-            throw new InvalidArgumentException("Cart","...","...");
+            throw new InvalidArgumentException("Saving cart");
         }
         cartRepository.save(cart);
     }

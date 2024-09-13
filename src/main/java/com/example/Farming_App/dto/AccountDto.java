@@ -5,10 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Schema(
-        name = "Product",
-        description = "Schema to hold account information"
-)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

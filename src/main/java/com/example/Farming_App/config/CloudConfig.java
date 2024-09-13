@@ -12,13 +12,11 @@ public class CloudConfig {
 
     @Bean
     public Cloudinary cloudinaryConfig(){
-        Cloudinary cloudinary=null;
-        Map config= new HashMap();
+        Map<String,Object> config= new HashMap<>();
         config.put("cloud_name","dkzvrtfvc");
         config.put("api_key", "757517974881382");
         config.put("api_secret", "KpykWNg_2UDI9bo0M9LeqYvzKSk");
         config.put("secure",true);
-        cloudinary=new Cloudinary(config);
-        return cloudinary;
+        return new Cloudinary(config);
     }
 }

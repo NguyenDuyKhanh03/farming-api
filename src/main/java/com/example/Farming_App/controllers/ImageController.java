@@ -14,7 +14,7 @@ public class ImageController {
 
     @PostMapping("upload")
     public String upload(@RequestParam("file") MultipartFile multipartFile) {
-        return imageService.upload(multipartFile);
+        return imageService.upload(multipartFile).get("secure_url").toString();
     }
 
 }
